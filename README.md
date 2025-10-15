@@ -1,5 +1,6 @@
 ### SIMPLE BLOG POST SIMULATION WITH FASTAPI CONTANARIZED WITH DOCKER
 > By Akinlade Temitope
+
 Here is a simple simulation of a blog post where post can be added,update of partial section of a post,get specific post of a user and also delete post
 #### HTTP REQUEST METHODS USED
 1. Get
