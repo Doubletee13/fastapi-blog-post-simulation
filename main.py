@@ -16,8 +16,8 @@ post_id = 0
 @app.get("/users/{id}")
 def get_post(id:int):
     if not id or id not in all_post:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-            detail="Post not found")
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Invalid input data")
     details = all_post[id]
     return {"message":"post retrieved successfully",
             "content":details
@@ -39,8 +39,8 @@ def add_post(user: User):
 @app.patch("/users/{id}")
 def update_post(id:int,user: User):
     if not id or id not in all_post:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-            detail="Post not found")
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Invalid input data")
     post = user.post
     all_post[id]["Post"]=post
     return {
@@ -49,11 +49,11 @@ def update_post(id:int,user: User):
     }
 
 
-@app.delete("/users/{id:int}")
-def delete_post(id):
+@app.delete("/users/{id}")
+def delete_post(id:int):
     if not id or id not in all_post:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-            detail="Post not found")
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Invalid input data")
     all_post.pop(id)
     return {
         "message":"post deleted successfully"
